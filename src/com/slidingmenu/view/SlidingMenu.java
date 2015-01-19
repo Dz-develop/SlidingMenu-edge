@@ -1,21 +1,18 @@
 package com.slidingmenu.view;
 
-import com.nineoldandroids.view.ViewHelper;
-import com.slidingmenu.R;
-import com.slidingmenu.utils.TypeChange;
-
-import android.app.Notification.Action;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.text.method.MovementMethod;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+
+import com.nineoldandroids.view.ViewHelper;
+import com.slidingmenu.R;
+import com.slidingmenu.utils.TypeChange;
 
 public class SlidingMenu extends HorizontalScrollView {
 
@@ -111,9 +108,6 @@ public class SlidingMenu extends HorizontalScrollView {
 	public boolean onTouchEvent(MotionEvent ev) {
 		int action = ev.getAction();
 		switch (action) {
-		case MotionEvent.ACTION_MOVE:
-			// ViewHelper;
-			break;
 		case MotionEvent.ACTION_UP:
 			int scrollX = getScrollX();
 			if (scrollX > mMenuWidth / 3) {
@@ -159,4 +153,14 @@ public class SlidingMenu extends HorizontalScrollView {
 			openMenu();
 		}
 	}
+
+	@Override
+	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+		super.onScrollChanged(l, t, oldl, oldt);
+		// 调用属性动画，设置translationX
+		// float scale = l / mMenuWidth * 1.0f;
+		float scale = 1.0f * l / mMenuWidth;// 从1~0
+		ViewHelper.setTranslationX(mMenu, mMenuWidth * scale);
+	}
+
 }

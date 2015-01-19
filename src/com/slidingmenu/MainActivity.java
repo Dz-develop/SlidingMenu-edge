@@ -19,10 +19,9 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		mLeftMenu = (SlidingMenu) findViewById(R.id.slidingmenu);
-		
 	}
 
-	public void toggleMenu() {
+	public void toggleMenu(View view) {
 		mLeftMenu.toggle();
 	}
 }

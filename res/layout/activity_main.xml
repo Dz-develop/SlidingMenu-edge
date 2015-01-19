@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
-        edge:rightPadding="100dp" >
+        edge:rightPadding="200dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
